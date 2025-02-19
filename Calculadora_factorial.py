@@ -1,9 +1,10 @@
-print("Bienvenido a la calculadora de factoriales")
-n = int(input("por favor ingresa un numero"))
-if n < 0:
-    print("el factorial del numero", n, "es: 0")
-else:
-    factorial = 1
-    for i in range(1, n + 1, 1):
-        factorial = factorial*i
-print("el factorial del numero", n, "es: ", factorial)            
+def factorial(n):
+    if n < 0:
+        return 0
+    elif n == 0 or n == 1:
+        return 1
+    else:
+        resultado = 1
+        for i in range(2, n + 1):
+            resultado *= i
+        return resultado    
