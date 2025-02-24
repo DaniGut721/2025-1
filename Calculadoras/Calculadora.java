@@ -22,6 +22,7 @@ public class Calculadora extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(null);
 
+        // Etiquetas y campos de texto
         JLabel lblNum1 = new JLabel("Número 1");
         lblNum1.setBounds(20, 20, 80, 20);
         panel.add(lblNum1);
@@ -44,9 +45,10 @@ public class Calculadora extends JFrame {
 
         txtTotal = new JTextField();
         txtTotal.setBounds(120, 80, 100, 20);
-        txtTotal.setEditable(false);
+        txtTotal.setEditable(false); // Hacer el campo de solo lectura
         panel.add(txtTotal);
 
+        // Botones
         btnSumar = new JButton("Sumar");
         btnSumar.setBounds(20, 120, 80, 30);
         panel.add(btnSumar);
@@ -67,12 +69,60 @@ public class Calculadora extends JFrame {
         btnBorrar.setBounds(20, 200, 80, 30);
         panel.add(btnBorrar);
 
+        // Acciones de los botones
         btnSumar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                int num1 = Integer.parseInt(txtNum1.getText());
-                int num2 = Integer.parseInt(txtNum2.getText());
-                int resultado = num1 + num2;
-                txtTotal.setText(String.valueOf(resultado));
+                try {
+                    int num1 = Integer.parseInt(txtNum1.getText());
+                    int num2 = Integer.parseInt(txtNum2.getText());
+                    int resultado = num1 + num2;
+                    txtTotal.setText(String.valueOf(resultado));
+                } catch (NumberFormatException ex) {
+                    txtTotal.setText("Error");
+                }
+            }
+        });
+
+        btnRestar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int num1 = Integer.parseInt(txtNum1.getText());
+                    int num2 = Integer.parseInt(txtNum2.getText());
+                    int resultado = num1 - num2;
+                    txtTotal.setText(String.valueOf(resultado));
+                } catch (NumberFormatException ex) {
+                    txtTotal.setText("Error");
+                }
+            }
+        });
+
+        btnMultiplicar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int num1 = Integer.parseInt(txtNum1.getText());
+                    int num2 = Integer.parseInt(txtNum2.getText());
+                    int resultado = num1 * num2;
+                    txtTotal.setText(String.valueOf(resultado));
+                } catch (NumberFormatException ex) {
+                    txtTotal.setText("Error");
+                }
+            }
+        });
+
+        btnDividir.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int num1 = Integer.parseInt(txtNum1.getText());
+                    int num2 = Integer.parseInt(txtNum2.getText());
+                    if (num2 == 0) {
+                        txtTotal.setText("Error: Div/0");
+                    } else {
+                        double resultado = (double) num1 / num2;
+                        txtTotal.setText(String.valueOf(resultado));
+                    }
+                } catch (NumberFormatException ex) {
+                    txtTotal.setText("Error");
+                }
             }
         });
 
